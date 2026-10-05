@@ -1,0 +1,67 @@
+.recruiter-dashboard { display: grid; gap: 30px; color: var(--ink-800); }
+.recruiter-dashboard__welcome { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
+.recruiter-dashboard__eyebrow { color: var(--blue-700); font-size: .72rem; font-weight: 750; letter-spacing: .1em; }
+.recruiter-dashboard__welcome h1 { margin-top: 8px; color: var(--ink-900); font-size: clamp(1.8rem, 3vw, 2.3rem); font-weight: 750; letter-spacing: -.04em; overflow-wrap: anywhere; }
+.recruiter-dashboard__welcome p, .recruiter-dashboard__section-heading p { margin-top: 7px; color: var(--muted); font-size: .92rem; line-height: 1.55; }
+.recruiter-dashboard__section { display: grid; gap: 15px; }
+.recruiter-dashboard__section-heading { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; }
+.recruiter-dashboard__section-heading h2 { color: var(--ink-900); font-size: 1.2rem; font-weight: 700; letter-spacing: -.02em; }
+.recruiter-dashboard__summary-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.recruiter-dashboard-summary { min-width: 0; }
+.recruiter-dashboard-summary__heading { display: flex; align-items: center; gap: 11px; }
+.recruiter-dashboard-summary__heading h3 { min-width: 0; color: var(--ink-900); font-size: 1rem; overflow-wrap: anywhere; }
+.recruiter-dashboard-summary__icon, .recruiter-dashboard-action__icon { display: grid; flex: 0 0 auto; width: 38px; height: 38px; place-items: center; border-radius: 9px; color: var(--blue-700); background: #eff6ff; font-weight: 700; }
+.recruiter-dashboard-summary dl { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 22px; }
+.recruiter-dashboard-summary__item dt { color: var(--muted); font-size: .76rem; font-weight: 600; }
+.recruiter-dashboard-summary__item dd { margin-top: 5px; color: var(--ink-900); font-size: .9rem; font-weight: 600; overflow-wrap: anywhere; }
+.recruiter-dashboard-summary__link, .recruiter-dashboard__all-link { display: inline-block; margin-top: 18px; color: var(--blue-700); font-size: .88rem; font-weight: 650; text-decoration: none; }
+.recruiter-dashboard-summary__link:hover, .recruiter-dashboard__all-link:hover { text-decoration: underline; }
+.recruiter-dashboard-setup-card { display: flex; align-items: center; justify-content: space-between; gap: 18px; }
+.recruiter-dashboard-setup-card h3 { color: var(--ink-900); font-size: .98rem; }
+.recruiter-dashboard-setup-card p { margin-top: 6px; color: var(--muted); font-size: .86rem; line-height: 1.5; }
+.recruiter-dashboard-state { display: grid; justify-items: start; gap: 10px; }
+.recruiter-dashboard-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.recruiter-dashboard-metric { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 17px 19px; }
+.recruiter-dashboard-metric > span { color: var(--muted); font-size: .86rem; font-weight: 600; }
+.recruiter-dashboard-metric > strong { color: var(--ink-900); font-size: 1.55rem; font-weight: 750; }
+.recruiter-dashboard-metric--active > strong { color: #067647; }
+.recruiter-dashboard-metric--inactive > strong { color: #667085; }
+.recruiter-dashboard__metrics--applications { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.recruiter-dashboard__list-card { padding: 4px 22px; }
+.recruiter-dashboard__list-title { padding-top: 18px; color: var(--ink-900); font-size: 1rem; }
+.recruiter-dashboard__job-list, .recruiter-dashboard__application-list { margin: 0; padding: 0; list-style: none; }
+.recruiter-dashboard-job, .recruiter-dashboard-application { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.recruiter-dashboard-job__copy, .recruiter-dashboard-application__main { min-width: 0; }
+.recruiter-dashboard-job h3, .recruiter-dashboard-application h3 { color: var(--ink-900); font-size: .92rem; font-weight: 650; overflow-wrap: anywhere; }
+.recruiter-dashboard-job p, .recruiter-dashboard-application p { margin-top: 5px; color: var(--muted); font-size: .8rem; }
+.recruiter-dashboard-application dl { display: flex; flex-wrap: wrap; gap: 7px 16px; margin-top: 8px; }
+.recruiter-dashboard-application dt { color: var(--muted); font-size: .7rem; }
+.recruiter-dashboard-application dd { margin-top: 2px; color: #344054; font-size: .78rem; }
+.recruiter-dashboard__empty { padding: 4px; }
+.recruiter-dashboard__actions { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.recruiter-dashboard-action { display: flex; min-width: 0; align-items: center; gap: 12px; padding: 16px; border: 1px solid var(--line); border-radius: 10px; background: white; color: inherit; text-decoration: none; transition: border-color 140ms ease, background-color 140ms ease; }
+.recruiter-dashboard-action:hover { border-color: #b2ccff; background: #fbfdff; }
+.recruiter-dashboard-action:focus-visible { outline: 3px solid #bfdbfe; outline-offset: 2px; }
+.recruiter-dashboard-action__copy { display: grid; min-width: 0; gap: 4px; }
+.recruiter-dashboard-action__copy strong { color: var(--ink-900); font-size: .9rem; }
+.recruiter-dashboard-action__copy span { color: var(--muted); font-size: .78rem; line-height: 1.4; }
+.recruiter-dashboard-action__arrow { margin-left: auto; color: #667085; font-size: 1.35rem; }
+@media (max-width: 780px) {
+  .recruiter-dashboard { gap: 24px; }
+  .recruiter-dashboard__metrics--applications { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+  .recruiter-dashboard__welcome { align-items: flex-start; flex-direction: column; }
+  .recruiter-dashboard__summary-grid, .recruiter-dashboard__actions { grid-template-columns: 1fr; }
+  .recruiter-dashboard__section-heading { align-items: flex-start; }
+  .recruiter-dashboard-setup-card { align-items: flex-start; flex-direction: column; }
+  .recruiter-dashboard-setup-card .ui-button { width: 100%; }
+  .recruiter-dashboard-summary dl { grid-template-columns: 1fr 1fr; }
+  .recruiter-dashboard__metrics { grid-template-columns: 1fr; }
+  .recruiter-dashboard__metrics--applications { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .recruiter-dashboard__section-heading .ui-button { flex: 0 0 auto; }
+}
+@media (max-width: 420px) {
+  .recruiter-dashboard__metrics--applications { grid-template-columns: 1fr; }
+  .recruiter-dashboard-job, .recruiter-dashboard-application { align-items: flex-start; flex-direction: column; }
+}

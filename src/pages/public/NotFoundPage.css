@@ -1,0 +1,61 @@
+.not-found-page {
+  display: grid;
+  min-height: 56vh;
+  place-items: center;
+  padding: 3rem 1.25rem;
+}
+
+.not-found-card {
+  width: min(100%, 38rem);
+  padding: clamp(2rem, 6vw, 3.5rem);
+  text-align: center;
+}
+
+.not-found-card__code {
+  display: block;
+  color: #2563eb;
+  font-size: clamp(3.5rem, 12vw, 6rem);
+  font-weight: 750;
+  letter-spacing: -0.07em;
+  line-height: 1;
+}
+
+.not-found-card__eyebrow {
+  margin: 1.25rem 0 0.5rem;
+  color: #2563eb;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+}
+
+.not-found-card h1 {
+  margin: 0;
+  color: #172033;
+  font-size: clamp(1.75rem, 5vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.not-found-card__message {
+  max-width: 29rem;
+  margin: 0.875rem auto 0;
+  color: #596579;
+  line-height: 1.65;
+}
+
+.not-found-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+@media (max-width: 480px) {
+  .not-found-card__actions {
+    flex-direction: column;
+  }
+
+  .not-found-card__actions > * {
+    width: 100%;
+  }
+}

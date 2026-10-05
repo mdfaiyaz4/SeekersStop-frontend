@@ -1,0 +1,65 @@
+.seeker-dashboard { display: grid; gap: 34px; color: #243b53; }
+.seeker-dashboard__header { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.seeker-dashboard__eyebrow { color: #2563eb; font-size: 0.71rem; font-weight: 750; letter-spacing: 0.1em; }
+.seeker-dashboard__header h1 { margin-top: 9px; font-size: clamp(1.8rem, 3vw, 2.3rem); font-weight: 750; letter-spacing: -0.04em; overflow-wrap: anywhere; }
+.seeker-dashboard__header p { margin-top: 9px; color: #667085; font-size: 0.95rem; line-height: 1.6; }
+.seeker-dashboard__header-action { flex: 0 0 auto; }
+.seeker-dashboard__section-heading { display: flex; align-items: end; justify-content: space-between; margin-bottom: 16px; }
+.seeker-dashboard__section-heading h2, .seeker-dashboard__panel-heading h2 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.02em; }
+.seeker-dashboard__section-heading p, .seeker-dashboard__panel-heading p { margin-top: 5px; color: #667085; font-size: 0.86rem; line-height: 1.5; }
+.seeker-action-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+.seeker-action-card { min-height: 222px; padding: 20px; display: flex; align-items: flex-start; flex-direction: column; }
+.seeker-action-card__icon, .seeker-recommendation-card__icon { width: 38px; height: 38px; display: grid; place-items: center; border-radius: 10px; font-size: 0.82rem; font-weight: 750; }
+.seeker-action-card__icon--blue { color: #2563eb; background: #eff6ff; }
+.seeker-action-card__icon--purple { color: #6941c6; background: #f4f3ff; }
+.seeker-action-card__icon--green { color: #067647; background: #ecfdf3; }
+.seeker-action-card__icon--amber { color: #b54708; background: #fffaeb; }
+.seeker-action-card h3 { margin-top: 16px; font-size: 0.98rem; font-weight: 700; }
+.seeker-action-card p { margin-top: 7px; color: #667085; font-size: 0.82rem; line-height: 1.55; }
+.seeker-action-card__link { margin: auto 0 -5px -12px; padding-inline: 12px; font-size: 0.82rem; }
+.seeker-dashboard__content-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(280px, 0.75fr); align-items: start; gap: 20px; }
+.seeker-dashboard__panel { min-width: 0; }
+.seeker-dashboard__panel-heading { min-height: 56px; margin-bottom: 12px; display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+.seeker-dashboard__panel-heading > a { flex: 0 0 auto; color: #2563eb; font-size: 0.83rem; font-weight: 650; text-decoration: none; }
+.seeker-dashboard__panel-heading > a:hover { text-decoration: underline; }
+.seeker-dashboard__empty-card { min-height: 275px; padding: 0 12px; display: grid; place-items: center; }
+.seeker-dashboard__empty-card .empty-state { min-height: 250px; }
+.seeker-dashboard__empty-card .empty-state__title { font-size: 0.98rem; }
+.seeker-dashboard__empty-card .empty-state__description { font-size: 0.84rem; }
+.seeker-dashboard__applications-state { min-height: 180px; display: grid; align-content: center; gap: 14px; padding: 20px; }
+.seeker-dashboard__applications-state--error { justify-items: start; }
+.seeker-recent-applications { display: grid; gap: 10px; }
+.seeker-recent-application { padding: 17px 19px; }
+.seeker-recent-application__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 14px; }
+.seeker-recent-application__heading > div { min-width: 0; }
+.seeker-recent-application__heading span { color: #667085; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; }
+.seeker-recent-application__heading h3 { margin-top: 6px; color: #243b53; font-size: 0.97rem; font-weight: 700; overflow-wrap: anywhere; }
+.seeker-recent-application__footer { margin-top: 12px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.seeker-recent-application__footer time { color: #667085; font-size: 0.78rem; }
+.seeker-recent-application__footer a { color: #2563eb; font-size: 0.8rem; font-weight: 650; text-decoration: none; }
+.seeker-recent-application__footer a:hover { text-decoration: underline; }
+.seeker-recommendation-card { min-height: 275px; padding: 25px; display: flex; align-items: flex-start; flex-direction: column; }
+.seeker-recommendation-card__icon { color: #2563eb; background: #eff6ff; }
+.seeker-recommendation-card h3 { margin-top: 19px; font-size: 1.05rem; }
+.seeker-recommendation-card p { margin-top: 8px; color: #667085; font-size: 0.87rem; line-height: 1.6; }
+.seeker-recommendation-card .ui-button { margin-top: auto; }
+
+@media (max-width: 1040px) {
+  .seeker-action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .seeker-action-card { min-height: 195px; }
+  .seeker-dashboard__content-grid { grid-template-columns: minmax(0, 1.1fr) minmax(250px, 0.9fr); }
+}
+
+@media (max-width: 720px) {
+  .seeker-dashboard { gap: 27px; }
+  .seeker-dashboard__header { align-items: flex-start; flex-direction: column; gap: 16px; }
+  .seeker-dashboard__header-action { min-height: 42px; }
+  .seeker-dashboard__content-grid { grid-template-columns: 1fr; gap: 24px; }
+  .seeker-dashboard__empty-card, .seeker-recommendation-card { min-height: 240px; }
+}
+
+@media (max-width: 440px) {
+  .seeker-action-grid { grid-template-columns: 1fr; gap: 10px; }
+  .seeker-action-card { min-height: 175px; }
+  .seeker-action-card__link { margin-top: 16px; }
+}

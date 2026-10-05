@@ -1,0 +1,39 @@
+.applications-page { display: grid; gap: 22px; color: var(--ink-800); }
+.applications-page__header { display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; }
+.applications-page__eyebrow { color: var(--blue-700); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.1em; }
+.applications-page__header h1 { margin-top: 8px; font-size: clamp(1.8rem, 3vw, 2.25rem); font-weight: 750; letter-spacing: -0.04em; }
+.applications-page__header p { margin-top: 8px; color: var(--muted); font-size: 0.95rem; line-height: 1.55; }
+.applications-page__count { flex: 0 0 auto; padding: 7px 11px; border: 1px solid var(--line); border-radius: 999px; color: #475467; background: white; font-size: 0.82rem; font-weight: 650; }
+.applications-state-card { min-height: 190px; display: grid; align-items: center; }
+.applications-state-card--error { justify-items: start; align-content: center; gap: 14px; padding: 24px; }
+.applications-empty-card { padding: 4px; }
+.applications-list { display: grid; gap: 14px; }
+.application-card { padding: 22px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.application-card__main { min-width: 0; flex: 1; }
+.application-card__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.application-card__eyebrow { color: var(--muted); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; }
+.application-card__heading h2 { margin-top: 7px; color: var(--ink-900); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.application-card__details { margin-top: 17px; display: flex; flex-wrap: wrap; gap: 12px 34px; }
+.application-card__details dt { color: var(--muted); font-size: 0.74rem; font-weight: 600; }
+.application-card__details dd { margin-top: 4px; color: #344054; font-size: 0.86rem; }
+.application-card__actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; gap: 8px; }
+.application-card__withdrawal-feedback { flex-basis: 100%; color: #05603a; font-size: 0.84rem; }
+.withdraw-confirm-backdrop { position: fixed; inset: 0; z-index: 60; padding: 20px; display: grid; place-items: center; background: rgb(16 24 40 / 45%); }
+.withdraw-confirm { width: min(100%, 440px); padding: 24px; border: 1px solid var(--line); border-radius: 12px; background: white; box-shadow: 0 18px 50px rgb(16 24 40 / 18%); }
+.withdraw-confirm h2 { color: var(--ink-900); font-size: 1.15rem; }
+.withdraw-confirm p { margin-top: 9px; color: var(--muted); font-size: 0.9rem; line-height: 1.5; }
+.withdraw-confirm .error-message { margin-top: 14px; }
+.withdraw-confirm__actions { margin-top: 22px; display: flex; justify-content: flex-end; gap: 9px; }
+
+@media (max-width: 640px) {
+  .applications-page { gap: 17px; }
+  .applications-page__header { align-items: flex-start; flex-direction: column; gap: 11px; }
+  .application-card { align-items: stretch; flex-direction: column; gap: 18px; padding: 19px; }
+  .application-card__heading { align-items: flex-start; flex-direction: column-reverse; gap: 10px; }
+  .application-card__details { gap: 14px 24px; }
+  .application-card__actions { flex-direction: column; }
+  .application-card__actions > .ui-button { width: 100%; }
+  .withdraw-confirm { padding: 20px; }
+  .withdraw-confirm__actions { flex-direction: column-reverse; }
+  .withdraw-confirm__actions > .ui-button { width: 100%; }
+}

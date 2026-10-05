@@ -1,0 +1,31 @@
+.resume-page { display: grid; gap: 22px; color: var(--ink-800); }
+.resume-page__header { display: grid; gap: 8px; }
+.resume-page__eyebrow { color: var(--blue-700); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.1em; }
+.resume-page__header h1 { margin-top: 1px; font-size: clamp(1.8rem, 3vw, 2.25rem); font-weight: 750; letter-spacing: -0.04em; }
+.resume-page__header p, .resume-page__document p, .resume-page__section-heading p { color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+.resume-page__loading { min-height: 190px; display: grid; align-items: center; }
+.resume-page__error { display: grid; justify-items: start; gap: 14px; padding: 24px; }
+.resume-page__empty-card { padding: 0 12px; }
+.resume-page__document { display: flex; align-items: center; justify-content: space-between; gap: 22px; }
+.resume-page__document-copy { min-width: 0; display: flex; align-items: center; gap: 16px; }
+.resume-page__document-copy h2, .resume-page__section-heading h2 { font-size: 1.12rem; font-weight: 700; letter-spacing: -0.02em; }
+.resume-page__document-copy p, .resume-page__section-heading p { margin-top: 6px; }
+.resume-page__document-icon { width: 48px; height: 54px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #dbeafe; border-radius: 9px; color: var(--blue-700); background: #eff6ff; font-size: 0.72rem; font-weight: 750; }
+.resume-page__document-actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+.resume-page__replace-card { padding: 24px; }
+.resume-page__section-heading { margin-bottom: 20px; }
+.resume-page__form { display: grid; justify-items: start; gap: 9px; }
+.resume-page__form .field { width: min(100%, 520px); }
+.resume-page__file-help, .resume-page__filename { color: var(--muted); font-size: 0.82rem; line-height: 1.5; }
+.resume-page__filename { color: var(--ink-800); overflow-wrap: anywhere; }
+.resume-page__submit { margin-top: 10px; padding-top: 18px; width: 100%; border-top: 1px solid var(--line); display: flex; justify-content: flex-end; }
+.resume-page__feedback { margin-bottom: 16px; padding: 11px 14px; border: 1px solid #abefc6; border-radius: 8px; color: #05603a; background: #ecfdf3; font-size: 0.88rem; }
+
+@media (max-width: 640px) {
+  .resume-page { gap: 17px; }
+  .resume-page__document { align-items: flex-start; flex-direction: column; padding: 19px; }
+  .resume-page__document-actions { width: 100%; justify-content: stretch; }
+  .resume-page__document-actions .ui-button { flex: 1 1 145px; }
+  .resume-page__replace-card { padding: 19px; }
+  .resume-page__submit .ui-button { width: 100%; }
+}

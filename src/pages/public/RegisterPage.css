@@ -1,0 +1,21 @@
+.register-page { min-height: auto; padding: 2px 0 10px; }
+.register-card { width: min(100%, 500px); padding-top: 30px; padding-bottom: 30px; }
+.register-card .login-card__symbol { width: 43px; height: 43px; margin-bottom: 14px; border-radius: 13px; }
+.register-card .login-card__intro h1 { font-size: clamp(1.65rem, 4vw, 1.9rem); }
+.register-card .login-card__intro p { margin-top: 7px; }
+.register-form { margin-top: 22px; gap: 15px; }
+.register-password-field { position: relative; }
+.register-password-field .field__input { padding-right: 64px; }
+.register-password-toggle { position: absolute; top: 34px; right: 12px; min-width: 42px; padding: 3px 0; border: 0; color: #2563eb; background: transparent; font-size: 0.82rem; font-weight: 650; cursor: pointer; }
+.register-password-toggle:focus-visible { outline: 3px solid #bfdbfe; outline-offset: 3px; border-radius: 3px; }
+.register-role-select { appearance: none; padding-right: 38px; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='none' viewBox='0 0 16 16'%3E%3Cpath d='m4 6 4 4 4-4' stroke='%23667085' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 13px center; cursor: pointer; }
+.register-role-select:invalid { color: #98a2b3; }
+.register-page .login-register-prompt { margin-top: 18px; }
+.register-page .login-home-link { margin-top: 16px; }
+.register-page .login-page__note { margin-top: 15px; }
+
+@media (max-width: 600px) {
+  .register-page { padding-top: 0; }
+  .register-card { padding: 24px 20px; }
+  .register-form { margin-top: 19px; gap: 14px; }
+}

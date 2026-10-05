@@ -1,0 +1,38 @@
+.recruiter-applications-page { display: grid; gap: 20px; color: var(--ink-800); }
+.recruiter-applications-page__header { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; }
+.recruiter-applications-page__eyebrow { color: var(--blue-700); font-size: 0.72rem; font-weight: 750; letter-spacing: 0.1em; }
+.recruiter-applications-page__header h1 { margin-top: 8px; font-size: clamp(1.8rem, 3vw, 2.25rem); font-weight: 750; letter-spacing: -0.04em; }
+.recruiter-applications-page__header p { margin-top: 8px; color: var(--muted); font-size: 0.94rem; line-height: 1.55; }
+.recruiter-applications-page__count { flex: 0 0 auto; padding: 8px 12px; border: 1px solid var(--line); border-radius: 999px; color: #475467; background: white; font-size: 0.82rem; font-weight: 650; }
+.recruiter-applications-state { min-height: 170px; display: grid; align-content: center; gap: 16px; }
+.recruiter-applications-state--error { justify-items: start; }
+.recruiter-applications-empty { padding: 4px; }
+.recruiter-applications-list { display: grid; gap: 14px; }
+.recruiter-application-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(230px, 300px); align-items: center; gap: 24px; }
+.recruiter-application-card__main { min-width: 0; }
+.recruiter-application-card__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
+.recruiter-application-card__eyebrow { color: var(--muted); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; }
+.recruiter-application-card__heading h2 { margin-top: 7px; color: var(--ink-900); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.recruiter-application-card__details { margin-top: 19px; display: flex; flex-wrap: wrap; gap: 12px 28px; }
+.recruiter-application-card__details dt { color: var(--muted); font-size: 0.72rem; font-weight: 650; }
+.recruiter-application-card__details dd { margin-top: 4px; color: #344054; font-size: 0.86rem; overflow-wrap: anywhere; }
+.recruiter-application-card__resume { margin-top: 18px; display: grid; justify-items: start; gap: 8px; }
+.recruiter-application-card__resume-unavailable { color: var(--muted); font-size: 0.86rem; }
+.recruiter-application-card__resume .error-message { max-width: 460px; }
+.recruiter-application-card__management { display: grid; align-content: center; gap: 8px; }
+.recruiter-application-card__label { color: var(--ink-800); font-size: 0.83rem; font-weight: 650; }
+.recruiter-application-card__controls { display: flex; align-items: center; gap: 8px; }
+.recruiter-application-card__select { min-width: 0; }
+.recruiter-application-card__feedback { color: #05603a; font-size: 0.83rem; }
+.recruiter-application-card__management .error-message { font-size: 0.82rem; }
+@media (max-width: 760px) {
+  .recruiter-application-card { grid-template-columns: 1fr; gap: 18px; }
+  .recruiter-application-card__management { max-width: 420px; }
+}
+@media (max-width: 520px) {
+  .recruiter-applications-page { gap: 16px; }
+  .recruiter-applications-page__header { align-items: flex-start; flex-direction: column; gap: 12px; }
+  .recruiter-application-card { padding: 18px; }
+  .recruiter-application-card__heading { align-items: flex-start; flex-direction: column; gap: 10px; }
+  .recruiter-application-card__controls { align-items: stretch; flex-direction: column; }
+}
