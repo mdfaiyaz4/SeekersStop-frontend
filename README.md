@@ -6,6 +6,26 @@ The React and Vite frontend for the SeekersStop job portal. It provides public j
 
 The frontend communicates with the SeekersStop Spring Boot backend through REST APIs. It supports two account roles, `JOB_SEEKER` and `RECRUITER`, with separate protected routes and workspaces.
 
+## Screenshots
+
+### Home / Job Search
+![SeekersStop Home](docs/screenshots/home.png)
+
+### Job Details
+![Job Details](docs/screenshots/job-details.png)
+
+### Seeker Dashboard
+![Seeker Dashboard](docs/screenshots/seeker-dashboard.png)
+
+### Recruiter Dashboard
+![Recruiter Dashboard](docs/screenshots/recruiter-dashboard.png)
+
+## Related Backend
+
+SeekersStop uses a separate Spring Boot REST API for authentication, jobs, applications, profiles, companies, and CV management.
+
+The frontend communicates with the backend through the REST endpoints documented above.
+
 ## Features
 
 ### Authentication
@@ -37,13 +57,13 @@ The frontend communicates with the SeekersStop Spring Boot backend through REST 
 
 | Technology | Version / use |
 | --- | --- |
-| React | `^19.2.8` |
-| Vite | `^8.3.0` |
+| React | `19.2.8` |
+| Vite | `8.3.0` |
 | JavaScript | ES modules and JSX |
-| React Router DOM | `^7.18.4` |
-| Axios | `^1.20.0` |
+| React Router DOM | `7.18.4` |
+| Axios | `1.20.0` |
 | CSS | Application and component styling |
-| ESLint | `^10.10.0`, with JavaScript, React Hooks, and React Refresh rules |
+| ESLint | `10.10.0`, with JavaScript, React Hooks, and React Refresh rules |
 
 ## Project Structure
 
@@ -70,6 +90,19 @@ src/
 ```
 
 The repository root also contains `vite.config.js`, `eslint.config.js`, `package.json`, `package-lock.json`, and `.env.example`.
+
+## Architecture
+
+```text
+React + Vite
+     |
+     | REST API / Axios
+     v
+Spring Boot Backend
+     |
+     v
+MySQL Database
+```
 
 ## Authentication & Authorization
 
