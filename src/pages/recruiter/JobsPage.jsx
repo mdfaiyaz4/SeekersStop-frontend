@@ -6,12 +6,14 @@ import EmptyState from '../../components/EmptyState.jsx'
 import ErrorMessage from '../../components/ErrorMessage.jsx'
 import JobForm from '../../components/JobForm.jsx'
 import LoadingSpinner from '../../components/LoadingSpinner.jsx'
+import Icon from '../../components/Icon.jsx'
+import Pagination from '../../components/Pagination.jsx'
 import StatusBadge from '../../components/StatusBadge.jsx'
 import { activateJob, deactivateJob, getMyJobs, updateJob } from '../../services/jobService.js'
 import { getApiErrorMessage } from '../../utils/apiError.js'
 import './JobsPage.css'
 
-const PAGE_SIZE = 10
+const PAGE_SIZE = 5
 
 function formatDeadline(value) {
   if (!value) return null
@@ -46,8 +48,8 @@ function JobItem({ job, onEdit, onStateChange, isBusy }) {
         </dl>
       </div>
       <div className="manage-job-card__actions">
-        {isActive && <Button as={Link} to={`/jobs/${encodeURIComponent(job.id)}`} variant="secondary" size="small">View Job</Button>}
-        <Button type="button" variant="secondary" size="small" onClick={() => onEdit(job)} disabled={isBusy}>Edit</Button>
+        {isActive && <Button as={Link} to={`/jobs/${encodeURIComponent(job.id)}`} variant="secondary" size="small"><Icon name="eye" size={16} />View Job</Button>}
+        <Button type="button" variant="secondary" size="small" onClick={() => onEdit(job)} disabled={isBusy}><Icon name="edit" size={16} />Edit</Button>
         <Button type="button" variant={isActive ? 'tertiary' : 'primary'} size="small" onClick={() => onStateChange(job, isActive ? 'deactivate' : 'activate')} disabled={isBusy}>
           {isBusy ? 'Saving...' : isActive ? 'Deactivate' : 'Activate'}
         </Button>
@@ -141,6 +143,7 @@ export default function JobsPage() {
           <h1>My Jobs</h1>
           <p>Manage the active and inactive jobs returned for your recruiter account.</p>
         </div>
+        <Button as={Link} to="/recruiter/jobs/new"><Icon name="plus" size={17} />Post a Job</Button>
       </header>
 
       {actionError && <ErrorMessage title="Job action failed" message={actionError} />}
@@ -174,7 +177,7 @@ export default function JobsPage() {
         {result.status === 'loading' && <Card className="manage-jobs-state"><LoadingSpinner label="Loading your jobs" size="large" /></Card>}
         {result.status === 'error' && <ErrorMessage title="Jobs unavailable" message={result.error} />}
         {result.status === 'success' && result.jobs.length === 0 && (
-          <Card className="manage-jobs-empty"><EmptyState title="No jobs yet" description="Jobs created for your recruiter account will appear here." icon="J" /></Card>
+          <Card className="manage-jobs-empty"><EmptyState title="No jobs yet" description="Create a listing to start receiving applications." icon="briefcase" action={<Button as={Link} to="/recruiter/jobs/new"><Icon name="plus" size={17} />Post a Job</Button>} /></Card>
         )}
         {result.status === 'success' && result.jobs.length > 0 && (
           <div className="manage-jobs-list">
@@ -183,13 +186,7 @@ export default function JobsPage() {
             ))}
           </div>
         )}
-        {result.status === 'success' && result.totalPages > 1 && (
-          <nav className="manage-jobs-pagination" aria-label="My jobs pages">
-            <Button type="button" variant="secondary" size="small" disabled={page <= 0} onClick={() => { setResult((current) => ({ ...current, status: 'loading' })); setPage((current) => Math.max(0, current - 1)) }}>Previous</Button>
-            <span>Page {page + 1} of {result.totalPages}</span>
-            <Button type="button" variant="secondary" size="small" disabled={page + 1 >= result.totalPages} onClick={() => { setResult((current) => ({ ...current, status: 'loading' })); setPage((current) => Math.min(result.totalPages - 1, current + 1)) }}>Next</Button>
-          </nav>
-        )}
+        {result.status === 'success' && <Pagination currentPage={page} totalPages={result.totalPages} onPageChange={(nextPage) => { setResult((current) => ({ ...current, status: 'loading' })); setPage(nextPage) }} label="My jobs pages" />}
       </section>
 
       {pendingAction && (

@@ -42,7 +42,7 @@ export async function getMyJobs({ page = 0, size, sort } = {}) {
 }
 
 export async function getAllMyJobs() {
-  const pageSize = 100
+  const pageSize = 5
   const firstPage = await getMyJobs({ page: 0, size: pageSize })
   if (!Array.isArray(firstPage?.content)) {
     throw new Error('The recruiter jobs response was not a paginated list.')

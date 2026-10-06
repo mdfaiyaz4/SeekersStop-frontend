@@ -5,9 +5,10 @@ import Card from '../../components/Card.jsx'
 import ErrorMessage from '../../components/ErrorMessage.jsx'
 import EmptyState from '../../components/EmptyState.jsx'
 import LoadingSpinner from '../../components/LoadingSpinner.jsx'
+import Icon from '../../components/Icon.jsx'
 import StatusBadge from '../../components/StatusBadge.jsx'
-import useAuth from '../../hooks/useAuth.js'
 import { getMyApplications } from '../../services/applicationService.js'
+import { getProfile } from '../../services/seekerService.js'
 import { getApiErrorMessage } from '../../utils/apiError.js'
 import './SeekerDashboardPage.css'
 
@@ -28,7 +29,7 @@ const quickActions = [
     description: 'Explore openings and find a role that fits your next step.',
     to: '/seeker/jobs',
     action: 'Browse jobs',
-    icon: 'J',
+    icon: 'briefcase',
     tone: 'blue',
   },
   {
@@ -36,7 +37,7 @@ const quickActions = [
     description: 'Keep up with the roles you have applied for.',
     to: '/seeker/applications',
     action: 'View applications',
-    icon: 'A',
+    icon: 'application',
     tone: 'purple',
   },
   {
@@ -44,7 +45,7 @@ const quickActions = [
     description: 'Review the skills and experience on your profile.',
     to: '/seeker/profile',
     action: 'View profile',
-    icon: 'P',
+    icon: 'user',
     tone: 'green',
   },
   {
@@ -52,17 +53,25 @@ const quickActions = [
     description: 'Keep your resume ready for your next opportunity.',
     to: '/seeker/resume',
     action: 'View resume',
-    icon: 'R',
+    icon: 'resume',
     tone: 'amber',
   },
 ]
 
 function SeekerDashboardPage() {
-  const { user } = useAuth()
+  const [profileState, setProfileState] = useState({ status: 'loading', profile: null })
   const [applications, setApplications] = useState([])
   const [applicationsLoading, setApplicationsLoading] = useState(true)
   const [applicationsError, setApplicationsError] = useState('')
   const [applicationsRequest, setApplicationsRequest] = useState(0)
+
+  useEffect(() => {
+    let active = true
+    getProfile()
+      .then((profile) => { if (active) setProfileState({ status: 'ready', profile }) })
+      .catch(() => { if (active) setProfileState({ status: 'error', profile: null }) })
+    return () => { active = false }
+  }, [])
 
   useEffect(() => {
     let active = true
@@ -107,8 +116,8 @@ function SeekerDashboardPage() {
       <header className="seeker-dashboard__header">
         <div>
           <span className="seeker-dashboard__eyebrow">JOB SEEKER DASHBOARD</span>
-          <h1>Welcome back, {user?.username || 'there'}</h1>
-          <p>Pick up where you left off and take a step toward your next opportunity.</p>
+          <h1>Welcome back{profileState.status === 'ready' && profileState.profile?.name?.trim() ? `, ${profileState.profile.name.trim()}` : ''}</h1>
+          <p>Ready to find your next opportunity?</p>
         </div>
         <Button as={Link} to="/seeker/jobs" className="seeker-dashboard__header-action">
           Find Jobs <span aria-hidden="true">→</span>
@@ -126,7 +135,7 @@ function SeekerDashboardPage() {
           {quickActions.map((item) => (
             <Card className="seeker-action-card" key={item.title}>
               <span className={`seeker-action-card__icon seeker-action-card__icon--${item.tone}`} aria-hidden="true">
-                {item.icon}
+                <Icon name={item.icon} size={20} />
               </span>
               <h3>{item.title}</h3>
               <p>{item.description}</p>
@@ -165,7 +174,7 @@ function SeekerDashboardPage() {
           {!applicationsLoading && !applicationsError && applications.length === 0 && (
             <Card className="seeker-dashboard__empty-card">
               <EmptyState
-                icon="A"
+                icon="application"
                 title="Your applications will appear here."
                 description="When you apply for a job, you can follow its status from this page."
                 action={<Button as={Link} to="/seeker/jobs" variant="secondary" size="small">Explore jobs</Button>}
@@ -207,7 +216,7 @@ function SeekerDashboardPage() {
             </div>
           </div>
           <Card className="seeker-recommendation-card">
-            <span className="seeker-recommendation-card__icon" aria-hidden="true">J</span>
+            <span className="seeker-recommendation-card__icon"><Icon name="search" size={22} /></span>
             <h3>Ready for something new?</h3>
             <p>Browse available jobs and explore your next opportunity.</p>
             <Button as={Link} to="/seeker/jobs">Find Jobs <span aria-hidden="true">→</span></Button>

@@ -49,7 +49,7 @@ function LoginPage() {
     <div className="login-page">
       <Card className="login-card">
         <div className="login-card__intro">
-          <span className="login-card__symbol" aria-hidden="true">S</span>
+          <img className="login-card__logo" src="/assets/branding/seekersstop-logo.png" alt="SeekersStop" />
           <span className="section-kicker">WELCOME BACK</span>
           <h1>Log in to SeekersStop</h1>
           <p>Continue your journey toward the right opportunity.</p>

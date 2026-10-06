@@ -4,6 +4,7 @@ import Card from '../../components/Card.jsx'
 import EmptyState from '../../components/EmptyState.jsx'
 import ErrorMessage from '../../components/ErrorMessage.jsx'
 import LoadingSpinner from '../../components/LoadingSpinner.jsx'
+import Icon from '../../components/Icon.jsx'
 import StatusBadge from '../../components/StatusBadge.jsx'
 import { getApplicationResume, getRecruiterApplications, updateApplicationStatus } from '../../services/applicationService.js'
 import { getApiErrorMessage } from '../../utils/apiError.js'
@@ -42,7 +43,7 @@ function ApplicationCard({ application, onUpdate, isUpdating, feedback, error, o
             <span className="recruiter-application-card__eyebrow">
               APPLICATION #{application.applicationId}
             </span>
-            <h2>{application.jobName || 'Job title unavailable'}</h2>
+            <h2><Icon name="briefcase" size={17} />{application.jobName || 'Job title unavailable'}</h2>
           </div>
           {application.applicationStatus && <StatusBadge status={application.applicationStatus} />}
         </div>
@@ -248,7 +249,7 @@ export default function ApplicationsPage() {
           <EmptyState
             title="No applications yet"
             description="Applications submitted for your jobs will appear here."
-            icon="A"
+            icon="usersCheck"
           />
         </Card>
       )}

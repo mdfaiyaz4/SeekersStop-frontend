@@ -48,7 +48,7 @@ function RegisterPage() {
     <div className="login-page register-page">
       <Card className="login-card register-card">
         <div className="login-card__intro">
-          <span className="login-card__symbol" aria-hidden="true">S</span>
+          <img className="login-card__logo" src="/assets/branding/seekersstop-logo.png" alt="SeekersStop" />
           <span className="section-kicker">GET STARTED</span>
           <h1>Create your account</h1>
           <p>Join SeekersStop and take the next step in your career journey.</p>

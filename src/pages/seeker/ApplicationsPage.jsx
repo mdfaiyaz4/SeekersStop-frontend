@@ -5,6 +5,7 @@ import Card from '../../components/Card.jsx'
 import EmptyState from '../../components/EmptyState.jsx'
 import ErrorMessage from '../../components/ErrorMessage.jsx'
 import LoadingSpinner from '../../components/LoadingSpinner.jsx'
+import Icon from '../../components/Icon.jsx'
 import StatusBadge from '../../components/StatusBadge.jsx'
 import { getMyApplications, withdrawApplication } from '../../services/applicationService.js'
 import { getApiErrorMessage } from '../../utils/apiError.js'
@@ -150,7 +151,7 @@ function ApplicationsPage() {
           <EmptyState
             title="No applications yet"
             description="When you apply for a job, it will appear here so you can keep track of its status."
-            icon="A"
+            icon="application"
             action={<Button as={Link} to="/jobs">Find jobs</Button>}
           />
         </Card>
@@ -188,11 +189,11 @@ function ApplicationsPage() {
                 </div>
                 <div className="application-card__actions">
                   <Button as={Link} to={`/seeker/applications/${encodeURIComponent(application.applicationId)}`} variant="secondary" size="small">
-                    View Application
+                    <Icon name="application" size={16} />View Application
                   </Button>
                   {application.jobId !== null && application.jobId !== undefined && (
                     <Button as={Link} to={`/jobs/${encodeURIComponent(application.jobId)}`} variant="secondary" size="small">
-                      View Job
+                      <Icon name="briefcase" size={16} />View Job
                     </Button>
                   )}
                   {applicationStatus === 'PENDING' && (
@@ -206,7 +207,7 @@ function ApplicationsPage() {
                         setConfirmingApplicationId(application.applicationId)
                       }}
                     >
-                      Withdraw Application
+                      <Icon name="undo" size={16} />Withdraw Application
                     </Button>
                   )}
                   {withdrawalFeedback.applicationId === application.applicationId && withdrawalFeedback.message && (

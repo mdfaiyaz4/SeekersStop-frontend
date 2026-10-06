@@ -10,7 +10,8 @@
 .resume-page__document-copy { min-width: 0; display: flex; align-items: center; gap: 16px; }
 .resume-page__document-copy h2, .resume-page__section-heading h2 { font-size: 1.12rem; font-weight: 700; letter-spacing: -0.02em; }
 .resume-page__document-copy p, .resume-page__section-heading p { margin-top: 6px; }
-.resume-page__document-icon { width: 48px; height: 54px; flex: 0 0 auto; display: grid; place-items: center; border: 1px solid #dbeafe; border-radius: 9px; color: var(--blue-700); background: #eff6ff; font-size: 0.72rem; font-weight: 750; }
+.resume-page__document-icon { width: 54px; height: 62px; flex: 0 0 auto; display: grid; place-items: center; align-content: center; gap: 1px; border: 1px solid #dbeafe; border-radius: 10px; color: var(--blue-700); background: linear-gradient(145deg, #eff6ff, #f8fbff); font-size: 0.63rem; font-weight: 750; }
+.resume-page__document-icon small { font-size: 0.59rem; letter-spacing: .04em; }
 .resume-page__document-actions { display: flex; flex: 0 0 auto; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
 .resume-page__replace-card { padding: 24px; }
 .resume-page__section-heading { margin-bottom: 20px; }

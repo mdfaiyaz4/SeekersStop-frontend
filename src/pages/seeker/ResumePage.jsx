@@ -6,6 +6,7 @@ import EmptyState from '../../components/EmptyState.jsx'
 import ErrorMessage from '../../components/ErrorMessage.jsx'
 import Input from '../../components/Input.jsx'
 import LoadingSpinner from '../../components/LoadingSpinner.jsx'
+import Icon from '../../components/Icon.jsx'
 import { getCV, updateCV } from '../../services/seekerService.js'
 import { getApiErrorMessage } from '../../utils/apiError.js'
 import './ResumePage.css'
@@ -157,7 +158,7 @@ export default function ResumePage() {
           <EmptyState
             title="No resume uploaded"
             description="Create your seeker profile and upload a PDF resume from the Profile page."
-            icon="R"
+            icon="resume"
             action={<Button as={Link} to="/seeker/profile">Go to Profile</Button>}
           />
         </Card>
@@ -167,7 +168,7 @@ export default function ResumePage() {
         <>
           <Card className="resume-page__document">
             <div className="resume-page__document-copy">
-              <span className="resume-page__document-icon" aria-hidden="true">PDF</span>
+              <span className="resume-page__document-icon"><Icon name="resume" size={25} /><small>PDF</small></span>
               <div>
                 <h2>Current resume</h2>
                 <p>Your stored resume is available as a PDF document.</p>
@@ -175,10 +176,10 @@ export default function ResumePage() {
             </div>
             <div className="resume-page__document-actions">
               <Button as="a" href={resumeUrl} target="_blank" rel="noopener noreferrer" variant="secondary">
-                View Resume
+                <Icon name="eye" size={17} />View Resume
               </Button>
               <Button as="a" href={resumeUrl} download="resume.pdf">
-                Download Resume
+                <Icon name="download" size={17} />Download Resume
               </Button>
             </div>
           </Card>
@@ -208,7 +209,7 @@ export default function ResumePage() {
               <div className="resume-page__submit">
                 <Button type="submit" disabled={isUploading || Boolean(fileError)} aria-busy={isUploading}>
                   {isUploading && <span className="button-spinner" aria-hidden="true" />}
-                  {isUploading ? 'Uploading...' : 'Replace Resume'}
+                  {!isUploading && <Icon name="upload" size={17} />}{isUploading ? 'Uploading...' : 'Replace Resume'}
                 </Button>
               </div>
             </form>

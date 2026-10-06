@@ -1,6 +1,6 @@
 .register-page { min-height: auto; padding: 2px 0 10px; }
 .register-card { width: min(100%, 500px); padding-top: 30px; padding-bottom: 30px; }
-.register-card .login-card__symbol { width: 43px; height: 43px; margin-bottom: 14px; border-radius: 13px; }
+.register-card .login-card__logo { width: min(138px, 100%); max-height: 46px; margin-bottom: 14px; }
 .register-card .login-card__intro h1 { font-size: clamp(1.65rem, 4vw, 1.9rem); }
 .register-card .login-card__intro p { margin-top: 7px; }
 .register-form { margin-top: 22px; gap: 15px; }

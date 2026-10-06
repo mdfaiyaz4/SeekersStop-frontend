@@ -13,6 +13,7 @@
 .recruiter-application-card__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .recruiter-application-card__eyebrow { color: var(--muted); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em; }
 .recruiter-application-card__heading h2 { margin-top: 7px; color: var(--ink-900); font-size: 1.1rem; font-weight: 700; letter-spacing: -0.02em; overflow-wrap: anywhere; }
+.recruiter-application-card__heading h2 { display: flex; align-items: center; gap: 8px; }
 .recruiter-application-card__details { margin-top: 19px; display: flex; flex-wrap: wrap; gap: 12px 28px; }
 .recruiter-application-card__details dt { color: var(--muted); font-size: 0.72rem; font-weight: 650; }
 .recruiter-application-card__details dd { margin-top: 4px; color: #344054; font-size: 0.86rem; overflow-wrap: anywhere; }

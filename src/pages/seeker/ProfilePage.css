@@ -17,6 +17,7 @@
 .profile-feedback { margin-bottom: 16px; padding: 11px 14px; border: 1px solid #abefc6; border-radius: 8px; color: #05603a; background: #ecfdf3; font-size: 0.88rem; }
 .profile-cv-card { padding: 20px 24px; display: grid; gap: 18px; }
 .profile-cv-card__heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 18px; }
+.profile-cv-card__heading h2 { display: flex; align-items: center; gap: 9px; }
 .profile-cv-card__initial-note, .profile-cv-card__missing, .profile-cv-card__help { color: var(--muted); font-size: 0.84rem; line-height: 1.5; }
 .profile-cv-card__current { display: flex; align-items: center; justify-content: space-between; gap: 18px; padding: 16px; border: 1px solid var(--line); border-radius: 9px; background: #fbfcfe; }
 .profile-cv-card__current h3 { font-size: 0.94rem; font-weight: 700; }

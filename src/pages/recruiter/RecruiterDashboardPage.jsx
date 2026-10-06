@@ -5,8 +5,8 @@ import Card from '../../components/Card.jsx'
 import EmptyState from '../../components/EmptyState.jsx'
 import ErrorMessage from '../../components/ErrorMessage.jsx'
 import LoadingSpinner from '../../components/LoadingSpinner.jsx'
+import Icon from '../../components/Icon.jsx'
 import StatusBadge from '../../components/StatusBadge.jsx'
-import useAuth from '../../hooks/useAuth.js'
 import { getRecruiterApplications } from '../../services/applicationService.js'
 import { getCompany } from '../../services/companyService.js'
 import { getRecruiterProfile } from '../../services/recruiterService.js'
@@ -17,11 +17,11 @@ import './RecruiterDashboardPage.css'
 const APPLICATION_STATUSES = ['PENDING', 'SHORTLISTED', 'ACCEPTED', 'REJECTED']
 const EMPTY_SECTION = { status: 'loading', value: null, error: '' }
 const QUICK_LINKS = [
-  { label: 'Post Job', description: 'Create a job listing.', to: '/recruiter/jobs/new', icon: '+' },
-  { label: 'Manage Jobs', description: 'View and manage your active and inactive jobs.', to: '/recruiter/jobs', icon: 'J' },
-  { label: 'Applications', description: 'Review applications for your jobs.', to: '/recruiter/applications', icon: 'A' },
-  { label: 'Recruiter Profile', description: 'Update your contact details.', to: '/recruiter/profile', icon: 'P' },
-  { label: 'Company', description: 'Manage your company information.', to: '/recruiter/company', icon: 'C' },
+  { label: 'Post Job', description: 'Create a job listing.', to: '/recruiter/jobs/new', icon: 'plus' },
+  { label: 'Manage Jobs', description: 'View and manage your active and inactive jobs.', to: '/recruiter/jobs', icon: 'briefcase' },
+  { label: 'Applications', description: 'Review applications for your jobs.', to: '/recruiter/applications', icon: 'usersCheck' },
+  { label: 'Recruiter Profile', description: 'Update your contact details.', to: '/recruiter/profile', icon: 'user' },
+  { label: 'Company', description: 'Manage your company information.', to: '/recruiter/company', icon: 'building' },
 ]
 
 function createInitialData() {
@@ -110,7 +110,6 @@ function JobRow({ job }) {
 }
 
 export default function RecruiterDashboardPage() {
-  const { user } = useAuth()
   const [data, setData] = useState(createInitialData)
   const [reloadCount, setReloadCount] = useState(0)
 
@@ -172,7 +171,7 @@ export default function RecruiterDashboardPage() {
       <header className="recruiter-dashboard__welcome">
         <div>
           <span className="recruiter-dashboard__eyebrow">RECRUITER WORKSPACE</span>
-          <h1>Welcome back, {user?.username || 'Recruiter'}</h1>
+          <h1>Welcome back{data.profile.status === 'ready' && data.profile.value?.name?.trim() ? `, ${data.profile.value.name.trim()}` : ''}</h1>
           <p>Manage your jobs, company information, and applications from one place.</p>
         </div>
         <Button as={Link} to="/recruiter/jobs/new">Post a Job</Button>
@@ -187,7 +186,7 @@ export default function RecruiterDashboardPage() {
             <SetupCard title="Complete your recruiter profile" description="Add your name and contact details to set up your recruiter account." to="/recruiter/profile" action="Set up profile" />
           ) : (
             <Card className="recruiter-dashboard-summary">
-              <div className="recruiter-dashboard-summary__heading"><span className="recruiter-dashboard-summary__icon" aria-hidden="true">P</span><h3>Recruiter profile</h3></div>
+              <div className="recruiter-dashboard-summary__heading"><span className="recruiter-dashboard-summary__icon"><Icon name="user" /></span><h3>Recruiter profile</h3></div>
               <dl><SummaryValue label="Name" value={data.profile.value?.name} /><SummaryValue label="Contact" value={data.profile.value?.contact} /></dl>
               <Link className="recruiter-dashboard-summary__link" to="/recruiter/profile">View profile</Link>
             </Card>
@@ -198,7 +197,7 @@ export default function RecruiterDashboardPage() {
             <SetupCard title="Set up your company" description="Add your company information to complete your recruiter workspace." to="/recruiter/company" action="Set up company" />
           ) : (
             <Card className="recruiter-dashboard-summary">
-              <div className="recruiter-dashboard-summary__heading"><span className="recruiter-dashboard-summary__icon" aria-hidden="true">C</span><h3>{data.company.value?.name || 'Company'}</h3></div>
+              <div className="recruiter-dashboard-summary__heading"><span className="recruiter-dashboard-summary__icon"><Icon name="building" /></span><h3>{data.company.value?.name || 'Company'}</h3></div>
               <dl><SummaryValue label="Location" value={data.company.value?.location} /><SummaryValue label="Website" value={data.company.value?.website} /></dl>
               <Link className="recruiter-dashboard-summary__link" to="/recruiter/company">View company</Link>
             </Card>
@@ -218,7 +217,7 @@ export default function RecruiterDashboardPage() {
               <MetricCard label="Inactive Jobs" value={jobCounts.inactive} tone="inactive" />
             </div>
             {jobs.length === 0 ? (
-              <Card className="recruiter-dashboard__empty"><EmptyState title="No jobs yet" description="Jobs created for your recruiter account will appear here." icon="J" action={<Button as={Link} to="/recruiter/jobs/new">Post a Job</Button>} /></Card>
+              <Card className="recruiter-dashboard__empty"><EmptyState title="No jobs yet" description="Jobs created for your recruiter account will appear here." icon="briefcase" action={<Button as={Link} to="/recruiter/jobs/new"><Icon name="plus" size={17} />Post a Job</Button>} /></Card>
             ) : (
               <Card className="recruiter-dashboard__list-card">
                 <ul className="recruiter-dashboard__job-list">{jobs.map((job) => <JobRow key={job.id} job={job} />)}</ul>
@@ -234,7 +233,7 @@ export default function RecruiterDashboardPage() {
         {data.applications.status === 'loading' || data.applications.status === 'error' ? (
           <SectionState section={data.applications} label="applications" onRetry={retry} />
         ) : applications.length === 0 ? (
-          <Card className="recruiter-dashboard__empty"><EmptyState title="No applications yet" description="Applications for your jobs will appear here." icon="A" /></Card>
+          <Card className="recruiter-dashboard__empty"><EmptyState title="No applications yet" description="Applications for your jobs will appear here." icon="usersCheck" /></Card>
         ) : (
           <>
             <div className="recruiter-dashboard__metrics recruiter-dashboard__metrics--applications">
@@ -253,7 +252,7 @@ export default function RecruiterDashboardPage() {
         <div className="recruiter-dashboard__actions">
           {QUICK_LINKS.map((item) => (
             <Link className="recruiter-dashboard-action" to={item.to} key={item.to}>
-              <span className="recruiter-dashboard-action__icon" aria-hidden="true">{item.icon}</span>
+              <span className="recruiter-dashboard-action__icon"><Icon name={item.icon} size={19} /></span>
               <span className="recruiter-dashboard-action__copy"><strong>{item.label}</strong><span>{item.description}</span></span>
               <span className="recruiter-dashboard-action__arrow" aria-hidden="true">›</span>
             </Link>

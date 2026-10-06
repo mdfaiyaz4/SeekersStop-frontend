@@ -4,6 +4,7 @@ import Card from '../../components/Card.jsx'
 import ErrorMessage from '../../components/ErrorMessage.jsx'
 import Input from '../../components/Input.jsx'
 import LoadingSpinner from '../../components/LoadingSpinner.jsx'
+import Icon from '../../components/Icon.jsx'
 import { createProfile, getCV, getProfile, updateCV, updateProfile } from '../../services/seekerService.js'
 import { getApiErrorMessage } from '../../utils/apiError.js'
 import './ProfilePage.css'
@@ -343,7 +344,7 @@ export default function ProfilePage() {
       <Card className="profile-cv-card profile-cv-card--managed">
         <div className="profile-cv-card__heading">
           <div>
-            <h2>Resume / CV</h2>
+            <h2><Icon name="resume" size={19} />Resume / CV</h2>
             <p>{hasProfile ? 'Manage the PDF resume saved to your profile.' : 'A PDF resume is required when creating your profile.'}</p>
           </div>
           {!hasProfile && <span className="profile-cv-card__format">PDF only · up to 5 MB</span>}
@@ -371,8 +372,8 @@ export default function ProfilePage() {
               <p>PDF resume uploaded</p>
             </div>
             <div className="profile-cv-card__actions">
-              <Button as="a" href={cvObjectUrl} target="_blank" rel="noopener noreferrer" variant="secondary">View Resume</Button>
-              <Button as="a" href={cvObjectUrl} download="resume.pdf" variant="secondary">Download Resume</Button>
+              <Button as="a" href={cvObjectUrl} target="_blank" rel="noopener noreferrer" variant="secondary"><Icon name="eye" size={16} />View Resume</Button>
+              <Button as="a" href={cvObjectUrl} download="resume.pdf" variant="secondary"><Icon name="download" size={16} />Download Resume</Button>
             </div>
           </div>
         )}
